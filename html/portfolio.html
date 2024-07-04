@@ -1,0 +1,441 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>VASANTHAKUMAR's Portfolio</title>
+    <link rel="icon" href="Image/v icon.png">
+    <style>
+        body {
+            font-family: 'Times New Roman', Times, serif;
+            margin: 0;
+            padding-top: 70px; /* Adjust padding for the sticky navbar */
+            background-color: black;
+            color: white;
+            line-height: 1.6;
+        }
+
+        h1, h2, h3, h4 {
+            text-align: center;
+            margin-bottom: 20px;
+        }
+
+        .content {
+            padding: 20px;
+        }
+
+        .contact-info {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+
+        img {
+            display: block;
+            margin: 20px auto;
+            border-radius: 50%; /* Keep image circular */
+            border: 2px solid white;
+            max-width: 100%; /* Ensure image does not overflow */
+            height: auto; /* Maintain original size */
+        }
+
+        a {
+            color: #61eb96;
+            text-decoration: none;
+        }
+
+        a:hover {
+            text-decoration: underline;
+        }
+
+        nav {
+            background-color: #61eb96;
+            padding: 10px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            z-index: 1000;
+            box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+        }
+
+        .nav-menu {
+            list-style: none;
+            margin: 0;
+            padding: 0;
+            display: flex;
+            flex-grow: 1;
+            justify-content: center;
+        }
+
+        .nav-menu li {
+            margin: 0 15px;
+        }
+
+        .nav-menu a {
+            color: white;
+            text-decoration: none;
+            padding: 14px 20px;
+            display: block;
+            text-align: center;
+            transition: background-color 0.3s ease;
+        }
+
+        .nav-menu a:hover {
+            background-color: #575757;
+            border-radius: 4px;
+        }
+
+        .button-container {
+            margin-left: auto;
+            display: flex;
+            gap: 10px;
+        }
+
+        .color-button, .theme-button {
+            padding: 10px 20px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        .color-button:hover, .theme-button:hover {
+            background-color: #0056b3;
+        }
+
+        .form-container {
+            background-color: #222;
+            padding: 20px;
+            border-radius: 5px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+            width: 100%;
+            max-width: 600px; /* Adjust for form width */
+            margin: 20px auto;
+            color: white;
+        }
+
+        form {
+            display: flex;
+            flex-direction: column;
+        }
+
+        label {
+            margin-bottom: 5px;
+            font-weight: bold;
+        }
+
+        input[type="text"],
+        input[type="email"],
+        input[type="tel"],
+        textarea {
+            padding: 10px;
+            margin-bottom: 15px;
+            border: 1px solid #ccc;
+            border-radius: 4px;
+            color: black;
+            width: 100%; /* Make input fields responsive */
+            box-sizing: border-box;
+        }
+
+        button {
+            padding: 10px;
+            background-color: #007BFF;
+            color: white;
+            border: none;
+            border-radius: 4px;
+            cursor: pointer;
+            transition: background-color 0.3s ease;
+        }
+
+        button:hover {
+            background-color: #0056b3;
+        }
+
+        .section {
+            padding: 20px;
+            margin-bottom: 40px;
+            background-color: #333;
+            color: white;
+            text-align: center;
+            border-radius: 10px;
+            box-shadow: 0 0 10px rgba(0, 0, 0, 0.5);
+        }
+
+        .section h2 {
+            margin-bottom: 20px;
+        }
+
+        .table-container {
+            width: 80%;
+            margin: 0 auto;
+            overflow-x: auto;
+        }
+
+        .table {
+            width: 100%;
+            margin-top: 20px;
+            border-collapse: collapse;
+        }
+
+        .table th,
+        .table td {
+            border: 1px solid #ddd;
+            padding: 10px;
+            text-align: left;
+        }
+
+        .table th {
+            background-color: #61eb96;
+        }
+
+        .table tr:nth-child(even) {
+            background-color: #444;
+        }
+
+        .table tr:hover {
+            background-color: #575757;
+        }
+
+        .skills-list {
+            list-style: none;
+            padding: 0;
+            margin: 0;
+            text-align: center;
+            margin-top: 20px;
+        }
+
+        .skills-list li {
+            display: inline-block;
+            margin: 10px;
+            background-color: #444;
+            padding: 10px;
+            border-radius: 5px;
+            transition: background-color 0.3s ease;
+        }
+
+        .skills-list li:hover {
+            background-color: #575757;
+        }
+
+        .resume-download {
+            text-align: center;
+            margin: 20px;
+        }
+
+        @media screen and (max-width: 768px) {
+            .nav-menu {
+                flex-direction: column;
+            }
+
+            .nav-menu li {
+                margin: 10px 0;
+            }
+
+            .table-container {
+                width: 100%;
+            }
+
+            .form-container {
+                width: 90%;
+            }
+        }
+    </style>
+</head>
+
+<body onload="showGreeting()">
+    <nav id="nav-bar">
+        <ul class="nav-menu">
+            <li><a href="#home">About</a></li>
+            <li><a href="#education">Education</a></li>
+            <li><a href="#experience">Experience</a></li>
+            <li><a href="#skills">Skills</a></li>
+            <li><a href="#about">Enquiry Form</a></li>
+            <li><a href="#contact">Contact</a></li>
+        </ul>
+        <div class="button-container">
+            <button class="color-button" onclick="changeColors()">Change Color</button>
+            <button class="theme-button" onclick="toggleTheme()">Change Theme</button>
+        </div>
+    </nav>
+
+    <div class="content" id="home">
+        <center id="heading-section">
+            <h1>VASANTHAKUMAR R</h1>
+            <h3>Open to new opportunities and eager to contribute!</h3>
+        </center>
+        <hr>
+        <div class="resume-download">
+            <a href="https://drive.google.com/file/d/1nZih0tz5Z0ViWjWkKOUWZA2T6Ss3nbCB/view?usp=sharingf" download>Download CV</a>
+        </div>
+        <h4>Welcome to my portfolio! I am Vasanthakumar, a passionate and dedicated Computer Science Engineer specializing in full-stack development with a keen interest in MERN stack technologies. With a solid foundation in HTML, CSS, JavaScript, and proficiency in MongoDB, Express.js, React.js, and Node.js, I thrive on creating dynamic and responsive web applications.</h4>
+        <h4>Throughout my career, I have successfully completed several projects that showcase my ability to design, develop, and deploy robust applications. My journey in software development has been driven by a deep curiosity for technology and a commitment to continuous learning.</h4>
+        <h4>Feel free to connect with me for potential opportunities or collaborations. Thank you for visiting!</h4>
+        <center><img src="Image/passport size.jpg" alt="Vasanthakumar's Photo"></center>
+    </div>
+    <hr>
+
+    <!-- Education Section -->
+    <div class="section" id="education">
+        <h2>Education</h2>
+        <div class="table-container">
+            <table class="table">
+                <tr>
+                    <th>Degree</th>
+                    <th>Institution</th>
+                    <th>Year</th>
+                    <th>Score</th>
+                </tr>
+                <tr>
+                    <td>SSLC</td>
+                    <td>Government Higher Secondary School Poolangal</td>
+                    <td>2017</td>
+                    <td>92%</td>
+                </tr>
+                <tr>
+                    <td>HSC</td>
+                    <td>Government Higher Secondary School Poolangal</td>
+                    <td>2019</td>
+                    <td>66%</td>
+                </tr>
+                <tr>
+                    <td>Graduation</td>
+                    <td>Sethu Institute of Technology-Kariapatti</td>
+                    <td>2023</td>
+                    <td>8.40 CGPA</td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Experience Section -->
+    <div class="section" id="experience">
+        <h2>Experience</h2>
+        <div class="table-container">
+            <table class="table">
+                <tr>
+                    <th>Company</th>
+                    <th>Position</th>
+                    <th>Duration</th>
+                    <th>Description</th>
+                </tr>
+                <tr>
+                    <td>Movate Technologies Pvt.Ltd</td>
+                    <td>Network Operation Engineer</td>
+                    <td>Sep 2023 – April 2024</td>
+                    <td>
+                        <ul>
+                            <li>Assisted in monitoring and maintaining network performance, ensuring minimal downtime and efficient operation.</li>
+                            <li>Supported the implementation and configuration of network devices and systems to enhance overall network reliability.</li>
+                            <li>Collaborated with senior engineers to troubleshoot and resolve network issues, contributing to a 15% reduction in average resolution time.</li>
+                            <li>Documented network configurations and operational procedures to facilitate knowledge sharing and improve team efficiency.</li>
+                            <li>Gained hands-on experience with network monitoring tools and scripting to automate routine tasks.</li>
+                            <li>Participated in regular training sessions and workshops to stay updated with the latest industry trends and technologies.</li>
+                        </ul>
+                    </td>
+                </tr>
+            </table>
+        </div>
+    </div>
+
+    <!-- Skills Section -->
+    <div class="section" id="skills">
+        <h2>Skills</h2>
+        <h3>Front-End</h3>
+        <ul class="skills-list">
+            <li>HTML</li>
+            <li>CSS</li>
+            <li>JavaScript</li>
+            <li>React.js</li>
+            <li>LaTex</li>
+            <li>Bootstrap</li>
+            
+        </ul>
+        <h3>Back-End</h3>
+        <ul class="skills-list">
+            <li>SQL</li>
+            <li>MySQL</li>
+            <li>MongoDB</li>
+            <li>Express.js</li>
+            <li>Node.js</li>
+        </ul>
+        <h3>Others</h3>
+        <ul class="skills-list">
+            <li>Git</li>
+            <li>GitHub</li>
+            <li>Microsoft Office</li>
+            <li>Canva</li>
+            <li>VS Code</li>
+            <li>Splunk</li>
+            <li>Bmc Helix ITSM</li>
+        </ul>
+    </div>
+
+    <div class="form-container" id="about">
+        <form action="#" method="post">
+            <h2>HR Details form</h2>
+            <iframe src="https://docs.google.com/forms/d/e/1FAIpQLSfnMmK-tX5mabF1blCIa98LWocttsqKzOO_TAbRAleqg0sDnQ/viewform?embedded=true" width="640" height="1161" frameborder="0" marginheight="0" marginwidth="0">Loading…</iframe>
+        </form>
+    </div>
+    <hr>
+
+    <div class="contact-info" id="contact">
+        <h2>CONTACT</h2>
+        <h2>+91 9787661418 || +91 8524850690</h2>
+        <h2><a href="mailto:vasanthakumar.61418@gmail.com">vasanthakumar.61418@gmail.com</a> || <a href="mailto:vk4118820@gmail.com">vk4118820@gmail.com</a></h2>
+        <h2>Aruppukkottai || Virudhunagar District || Tamilnadu</h2>
+        <h2><a href="https://www.linkedin.com/in/vasanthakumar-r-316a89222/">LINKEDIN Profile</a></h2>
+    </div>
+
+    <script>
+        function showGreeting() {
+            var date = new Date();
+            var hours = date.getHours();
+            var greeting = "";
+            if (hours < 12) {
+                greeting = "Good Morning!, My Respected HR and My Friends";
+            } else if (hours < 18) {
+                greeting = "Good Afternoon!, My Respected HR and My Friends";
+            } else {
+                greeting = "Good Evening!, My Respected HR and My Friends";
+            }
+            alert(greeting);
+        }
+
+        // Array of colors for the navigation bar and heading section
+        let colors = ['#007BFF', '#FF5733', '#33FF57', '#3357FF', '#FF33A6', '#FF9F33']; 
+        let currentIndex = 0;
+
+        // Function to change colors of navigation bar and heading section
+        function changeColors() {
+            let navBar = document.getElementById('nav-bar');
+            let headingSection = document.getElementById('heading-section');
+            let newColor = colors[currentIndex];
+
+            // Change the background color of both elements
+            navBar.style.backgroundColor = newColor;
+            headingSection.style.backgroundColor = newColor;
+
+            // Update index for next color
+            currentIndex = (currentIndex + 1) % colors.length;
+        }
+
+        function toggleTheme() {
+            var body = document.body;
+            if (body.style.backgroundColor === "black") {
+                body.style.backgroundColor = "white";
+                body.style.color = "black";
+            } else {
+                body.style.backgroundColor = "black";
+                body.style.color = "white";
+            }
+        }
+    </script>
+</body>
+
+</html>
